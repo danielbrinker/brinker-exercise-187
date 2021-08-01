@@ -119,7 +119,7 @@ public class UserAccounts
 			recordCount = RESET_VALUE;
 
 			//instantiation statement to attempt to open file
-			PrintWriter filePW = new PrintWriter(new FileWriter(masterFileName, false));
+			PrintWriter filePW = new PrintWriter(new FileWriter(masterFileName, true));
 
 			//writes borrowed values to file
 			filePW.printf("%n%s\t%s", borrowedUserName, borrowedPassword);
