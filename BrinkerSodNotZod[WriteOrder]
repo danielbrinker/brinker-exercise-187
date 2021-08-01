@@ -1,0 +1,101 @@
+//AUTHOR:	Daniel Brinker
+//COURSE:	CPT-187
+//CREATED:	July 20, 2021
+//PURPOSE:	A simulated written record of item names, prices, ID numbers, quantity, 
+//			and total cost of an order.
+
+//START OF package
+package edu.cpt187.brinker.exercise6;
+
+//Import Java FileWriter
+import java.io.FileWriter;
+
+//Import Java IOException
+import java.io.IOException;
+
+//Import Java PrintWriter
+import java.io.PrintWriter;
+
+//START OF WriteOrder class
+public class WriteOrder 
+{
+	//Declare and initialize all class constants and attributes
+	private boolean fileFoundFlag = false;	//declare and initialize fileFoundFlag
+	private String masterFileName = "";		//declare and initialize masterFileName
+	private int recordCount = 0;			//declare and initialize recordCount
+
+	//Non-default constructor
+	WriteOrder(String borrowedFileName)
+	{
+		//assigns borrowedFileName to masterFileName
+		masterFileName = borrowedFileName;	
+
+	}//END OF non-default constructor
+
+	//SETTERS
+
+	//Setter to setWriteOrder
+	public void setWriteOrder(int borrowedItemID, String borrowedItemName, double borrowedItemPrice, int borrowedQuantity, 
+			double borrowedOrderCost)
+	{
+		//try block to try to open file
+		try
+		{
+			//instantiation statement to attempt to open file
+			PrintWriter filePW = new PrintWriter(new FileWriter(masterFileName, true));
+
+			//writes borrowed values to file
+			filePW.printf("%n%d\t%s\t%f\t%d\t%f", borrowedItemID, borrowedItemName, borrowedItemPrice, borrowedQuantity, borrowedOrderCost);
+
+			//increment recordCount
+			recordCount++;
+
+			//assign true to fileFoundFlag
+			fileFoundFlag = true;
+
+			//close Print Writer
+			filePW.close();
+
+		}//END OF try block to try to open file
+
+		//catch block in case file isn't successfully opened
+		catch(IOException ex)
+		{
+			//assigns false to fileFoundFlag
+			fileFoundFlag = false;
+
+		}//END OF catch block in case file isn't successfully opened
+
+	}//END OF setter to setWriteOrder
+
+	//END OF SETTERS
+
+	//GETTERS
+
+	//Getter to getFileFoundFlag
+	public boolean getFileFoundFlag()
+	{
+		//return fileFoundFlag to main
+		return fileFoundFlag;
+
+	}//END OF getFileFoundFlag getter
+
+	//Getter to getFileName
+	public String getFileName()
+	{
+		//return masterFileName to main
+		return masterFileName;
+
+	}//END OF getFileName getter
+
+	//Getter to getRecordCount
+	public int getRecordCount()
+	{
+		//return recordCount to main
+		return recordCount;			
+
+	}//END OF getRecordCount getter
+
+	//END OF GETTERS
+
+}//END OF WriteOrder class
