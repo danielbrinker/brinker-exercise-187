@@ -170,10 +170,7 @@ public class Inventory
 	public void setBubbleSort()
 	{
 		//Declare and initialize local variable
-		int localLast = 0;
-
-		//assign recordCount minus ONE to localLast
-		localLast = recordCount - ONE;
+		int localLast = recordCount - ONE;
 
 		//run-while localLast is greater than zero
 		while (localLast > 0)
